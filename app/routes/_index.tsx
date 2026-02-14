@@ -3,7 +3,7 @@ import type { MetaFunction } from "@remix-run/node";
 export const meta: MetaFunction = () => {
   return [
     {
-      title: "Dra. Ana Lia Rocha - Pediatra e Neonatologista em Sobral.",
+      title: "Dra. Ana Lia Rocha — Pediatra e Neonatologista em Sobral.",
     },
     {
       name: "description",
@@ -26,14 +26,14 @@ export default function Index() {
       <div className="text-center absolute w-full top-0 text-[10px] py-4 font-bold tracking-wider">
         MÉDICA PEDIÁTRICA E NEONATOLOGISTA EM SOBRAL
       </div>
-      <div className="w-full grid items-end bg-gradient-to-t from-[#fffc]">
+      <div className="w-full grid items-end bg-gradient-to-t from-[#fff]">
         <div className="pb-8 text-center">
           <div className="flex my-12 flex-col gap-2 px-16">
             <a
               target="_blank"
               rel="noreferrer"
               href={encodeURI(
-                "https://wa.me/+5588992003000?text=Olá, gostaria de marcar uma CONSULTA DOMICILIAR com a Dra. Margarida.",
+                "https://wa.me/+55088999990479?text=Olá, gostaria de marcar uma consulta com a Dra. Ana Lia.",
               )}
               className="link bg-lia-blue text-white"
             >
@@ -43,7 +43,7 @@ export default function Index() {
               target="_blank"
               rel="noreferrer"
               href={encodeURI(
-                "https://wa.me/+5588992003000?text=Olá, gostaria de marcar uma CONSULTA OFTALMOLÓGICA EM SOBRAL com a Dra. Margarida.",
+                "https://wa.me/+5588997322055?text=Olá, gostaria de marcar uma consulta com a Dra. Ana Lia.",
               )}
               className="link bg-lia-tomato text-white"
             >
@@ -51,9 +51,9 @@ export default function Index() {
             </a>
           </div>
 
-          <img src="./logo.png" alt="" className="w-40 mx-auto mb-4" />
+          <img src="./logo.svg" alt="" className="w-40 mx-auto mb-4" />
 
-          <div className="text-xs">
+          {/* <div className="text-xs">
             Siga o meu{" "}
             <a
               href="https://instagram.com/dramargaridacarneiro"
@@ -63,7 +63,7 @@ export default function Index() {
             >
               Instagram
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
