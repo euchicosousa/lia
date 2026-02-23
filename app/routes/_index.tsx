@@ -43,7 +43,7 @@ export default function Index() {
               target="_blank"
               rel="noreferrer"
               href={encodeURI(
-                "https://wa.me/+5588997322055?text=Olá, gostaria de marcar uma consulta com a Dra. Ana Lia.",
+                "https://wa.me/+5588996953249?text=Olá, gostaria de marcar uma consulta com a Dra. Ana Lia.",
               )}
               className="link bg-lia-tomato text-white"
             >
