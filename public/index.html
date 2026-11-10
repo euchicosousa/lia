@@ -10,7 +10,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Dra. Ana Lia Rocha — Pediatra e Neonatologista em Sobral" />
     <meta property="og:description" content="Agende suas consultas pediátricas com a Dra. Ana Lia Rocha em Sobral." />
-    <!-- TODO: og:image precisa ser URL completa de uma arte 1200x630 em public/ (ex.: https://lia.cnvt.link/og.jpg). -->
+    <!-- og:image: URL completa. Quadrada (600x600) de propósito: fica melhor no WhatsApp. -->
+    <meta property="og:image" content="https://analiarocha.cnvt.link/og.jpg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
     <meta name="theme-color" content="#ffffff" />
     <!-- TODO: favicon quadrado (o logo é largo). Quando existir public/ico.png: <link rel="icon" href="/ico.png" /> -->
 
@@ -26,6 +29,18 @@
         const tema = TEMAS.includes(pedido) ? pedido : TEMAS[0];
         document.documentElement.dataset.tema = tema;
         document.querySelector('meta[name="theme-color"]').content = COR[tema];
+      }
+    </script>
+
+    <!-- ===== FUNDO: uma das fotos de public/imagens/ é sorteada a cada visita (sem piscar).
+         Para trocar/adicionar fotos, edite a lista FOTOS. Para testar: /?fundo=3 (número da foto, começando em 1).
+         Se o script falhar, vale a foto padrão do --foto no CSS. ===== -->
+    <script>
+      {
+        const FOTOS = ["bg1", "bg2", "bg3", "bg4", "bg5"].map((n) => `imagens/${n}.webp`);
+        const pedido = Number(new URLSearchParams(location.search).get("fundo"));
+        const foto = FOTOS[pedido >= 1 && pedido <= FOTOS.length ? pedido - 1 : Math.floor(Math.random() * FOTOS.length)];
+        document.documentElement.style.setProperty("--foto", `url("${foto}")`);
       }
     </script>
 
@@ -46,7 +61,7 @@
         --raio: 9999px;            /* botões em pílula */
         --fonte: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
         --largura: 600px;
-        --foto: url("bg.webp");   /* foto de fundo (800x1200) */
+        --foto: url("imagens/bg1.webp");   /* foto padrão (o script do <head> sorteia outra) */
       }
       /* ============================================================================ */
 
