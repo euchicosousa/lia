@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===== Título, descrição e prévia ao compartilhar ===== -->
+    <title>Dra. Ana Lia Rocha — Pediatra e Neonatologista em Sobral</title>
+    <meta name="description" content="Agende suas consultas pediátricas com a Dra. Ana Lia Rocha em Sobral." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dra. Ana Lia Rocha — Pediatra e Neonatologista em Sobral" />
+    <meta property="og:description" content="Agende suas consultas pediátricas com a Dra. Ana Lia Rocha em Sobral." />
+    <!-- TODO: og:image precisa ser URL completa de uma arte 1200x630 em public/ (ex.: https://lia.cnvt.link/og.jpg). -->
+    <meta name="theme-color" content="#ffffff" />
+    <!-- TODO: favicon quadrado (o logo é largo). Quando existir public/ico.png: <link rel="icon" href="/ico.png" /> -->
+
+    <!-- Rastreamento (Google Analytics e Pixel da Meta): configure os IDs em /tracking.js -->
+    <script src="tracking.js"></script>
+
+    <!-- Tema único (claro): a foto de fundo é clara. Para testar outro tema, crie :root[data-tema="..."]. -->
+    <script>
+      {
+        const TEMAS = ["claro"];
+        const COR = { claro: "#ffffff" };
+        const pedido = new URLSearchParams(location.search).get("tema");
+        const tema = TEMAS.includes(pedido) ? pedido : TEMAS[0];
+        document.documentElement.dataset.tema = tema;
+        document.querySelector('meta[name="theme-color"]').content = COR[tema];
+      }
+    </script>
+
+    <style>
+      /* ===================== EDITE AQUI: identidade da Dra. Ana Lia ===================== */
+      :root {
+        --fundo: #ffffff;
+        --texto: #2b2b2b;
+        --texto-suave: #4a4f50;
+        --botao: #8394a8;          /* lia-blue (Clínica Vivat) */
+        --botao-texto: #ffffff;    /* estilo dela: texto branco (contraste ~3:1 no azul e no coral, abaixo dos 4,5:1 recomendados) */
+        --botao-2: #f59a93;        /* lia-tomato (CrescEndo) */
+        --botao-2-texto: #ffffff;
+        --botao-3: #86cbb7;        /* lia-green (De olho na fralda) */
+        --botao-3-texto: #ffffff;
+        --borda: #e2e2e2;
+        --foco: #2563eb;
+        --raio: 9999px;            /* botões em pílula */
+        --fonte: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --largura: 600px;
+        --foto: url("bg.webp");   /* foto de fundo (800x1200) */
+      }
+      /* ============================================================================ */
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; }
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        background: var(--fundo);
+        color: var(--texto);
+        font-family: var(--fonte);
+        line-height: 1.4;
+        -webkit-font-smoothing: antialiased;
+      }
+      img, svg { display: block; max-width: 100%; height: auto; }
+      a { color: inherit; text-decoration: none; }
+      :focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; border-radius: var(--raio); }
+
+      /* Coluna com a foto de fundo; o degradê branco embaixo dá leitura aos botões */
+      .pagina {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        max-width: var(--largura);
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin-inline: auto;
+        background: var(--foto) top / cover no-repeat, var(--fundo);
+      }
+
+      /* ===== Topo: faixa com a especialidade (fundo claro garante o contraste sobre a foto) ===== */
+      .topo { display: flex; justify-content: center; padding: 1rem; }
+      .topo h1 {
+        padding: 0.4rem 0.9rem;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--texto);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      /* ===== Parte de baixo: botões + logo ===== */
+      .base { padding: 3rem 4rem 1.5rem; text-align: center; background: linear-gradient(to top, #fff 60%, transparent); }
+      @media (max-width: 420px) { .base { padding-inline: 1.5rem; } }
+
+      .links { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3.5rem;
+        padding: 1.125rem 1.5rem;
+        border-radius: var(--raio);
+        background: var(--botao);
+        color: var(--botao-texto);
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1.1;
+        transition: scale 0.2s ease-out, opacity 0.2s ease-out;
+      }
+      .item:hover { scale: 1.02; opacity: 0.92; }
+      .item:active { scale: 0.97; }
+      .item-2 { background: var(--botao-2); color: var(--botao-2-texto); }
+      .item-3 { background: var(--botao-3); color: var(--botao-3-texto); }
+      .nota { margin-top: -0.125rem; font-size: 0.75rem; color: var(--texto-suave); }
+
+      .logo { width: 10rem; margin: 0 auto; }
+
+      /* ===== Animação de entrada ===== */
+      .anim > * { animation: entrar 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .anim > :nth-child(2) { animation-delay: 0.06s; }
+      .anim > :nth-child(3) { animation-delay: 0.12s; }
+      @keyframes entrar { from { opacity: 0; translate: 0 24px; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        .anim > * { animation: none; }
+        .item { transition: none; }
+        .item:hover { scale: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="pagina">
+      <header class="topo">
+        <h1>Médica pediátrica e neonatologista em Sobral</h1>
+      </header>
+
+      <div class="base">
+        <!--
+          ===== Itens =====
+          Cada botão é um link wa.me direto (sem rota curta). Para mudar o número, troque o 55DDDNUMERO.
+          A mensagem fica codificada (encodeURIComponent). Atributos úteis: data-track, data-de, data-ate, data-dias.
+        -->
+        <nav class="links anim" aria-label="Agendar consulta">
+          <!-- CLÍNICA VIVAT: WhatsApp da clínica -->
+          <a class="item" href="https://wa.me/5588999990479?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20Dra.%20Ana%20Lia." target="_blank" rel="noopener" data-track="whatsapp-vivat">
+            Consulta na Clínica Vivat
+          </a>
+          <!-- CRESCENDO: WhatsApp da clínica -->
+          <a class="item item-2" href="https://wa.me/5588996953249?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20Dra.%20Ana%20Lia." target="_blank" rel="noopener" data-track="whatsapp-crescendo">
+            Consulta na CrescEndo
+          </a>
+          <!-- DE OLHO NA FRALDA: IA da Danone que analisa as fezes do recém-nascido (site externo) -->
+          <a class="item item-3" href="https://deolhonafralda.aptanutri.com.br/" target="_blank" rel="noopener" data-track="de-olho-na-fralda">
+            De olho na fralda
+          </a>
+          <p class="nota">IA que analisa as fezes do recém-nascido</p>
+        </nav>
+
+        <script>
+          // Esconde itens fora do período (data-de / data-ate) ou fora dos dias da semana (data-dias).
+          {
+            const d = new Date();
+            const diaSemana = String(d.getDay());
+            document.querySelectorAll("[data-dias]").forEach((el) => {
+              if (!el.dataset.dias.split(",").map((x) => x.trim()).includes(diaSemana)) el.remove();
+            });
+            const hoje = [d.getFullYear(), String(d.getMonth() + 1).padStart(2, "0"), String(d.getDate()).padStart(2, "0")].join("-");
+            document.querySelectorAll("[data-de], [data-ate]").forEach((el) => {
+              const { de, ate } = el.dataset;
+              if ((de && hoje < de) || (ate && hoje > ate)) el.remove();
+            });
+          }
+        </script>
+
+        <!-- Logo (o nome já está no título da página, por isso alt vazio). Largo: 1242x591. -->
+        <img class="logo" src="logo.svg" alt="" width="160" height="76" />
+      </div>
+    </main>
+  </body>
+</html>
